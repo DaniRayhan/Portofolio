@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dani Rayhan Nurzaki | Portofolio (Crimson)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<script>tailwind.config={darkMode:'class'}</script>
+<style>
+:root{--bg:#f1f5f9;--fg:#0f172a;--card:rgba(255,255,255,.7);--bd:rgba(15,23,42,.12);--mut:#475569}
+.dark{--bg:#0a0a0c;--fg:#e2e8f0;--card:rgba(255,255,255,.04);--bd:rgba(255,255,255,.1);--mut:#94a3b8}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--fg);transition:background .4s,color .4s}
+.mono{font-family:'JetBrains Mono',monospace}
+.mut{color:var(--mut)}
+.glass{background:var(--card);border:1px solid var(--bd);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:1rem;transition:.3s}
+.glass:hover{transform:scale(1.03);border-color:#ef4444;box-shadow:0 0 25px rgba(239,68,68,.35)}
+.grad{background:linear-gradient(90deg,#dc2626,#ef4444);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-block;padding:.75rem 1.5rem;border-radius:.75rem;font-weight:700;transition:.3s}
+.btn-p{background:linear-gradient(90deg,#dc2626,#ef4444);color:#fff}
+.btn-p:hover,.btn-o:hover{transform:scale(1.07);box-shadow:0 0 25px rgba(220,38,38,.6)}
+.btn-o{border:1px solid #ef4444;color:#ef4444}
+.nav a.on{color:#ef4444}
+.inp{width:100%;padding:.75rem 1rem;border-radius:.75rem;background:var(--card);border:1px solid var(--bd);color:var(--fg);outline:none;transition:.3s}
+.inp:focus{border-color:#ef4444;box-shadow:0 0 15px rgba(239,68,68,.4)}
+.sec{padding:5rem 1.25rem;max-width:72rem;margin:auto}
+.rv{opacity:0;transform:translateY(30px);transition:.8s}.rv.show{opacity:1;transform:none}
+.frame{position:relative;border-radius:50%;padding:6px;background:linear-gradient(135deg,#dc2626,#ef4444);box-shadow:0 0 60px rgba(239,68,68,.55);animation:fl 5s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-12px)}}
+.tl{border-left:2px solid #ef4444;margin-left:.5rem}
+.tl>div{position:relative;margin-left:1.5rem}
+.tl>div::before{content:"";position:absolute;left:-1.95rem;top:1.4rem;width:.75rem;height:.75rem;border-radius:50%;background:#dc2626;box-shadow:0 0 12px #dc2626}
+.grid-bg{position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(239,68,68,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(239,68,68,.07) 1px,transparent 1px);background-size:44px 44px}
+
+#glow{position:fixed;left:0;top:0;width:600px;height:600px;z-index:-1;pointer-events:none;background:radial-gradient(circle,rgba(239,68,68,.22),transparent 60%);will-change:transform}
+#ring,#dot{position:fixed;left:0;top:0;pointer-events:none;z-index:9998;border-radius:50%}
+#ring{width:34px;height:34px;border:1.5px solid #ef4444;box-shadow:0 0 14px rgba(239,68,68,.6);transition:width .25s,height .25s,background .25s}
+#ring.big{width:60px;height:60px;background:rgba(239,68,68,.12)}#ring.press{width:20px;height:20px}
+#dot{width:6px;height:6px;background:#ef4444;box-shadow:0 0 10px #ef4444}
+@media (pointer:coarse){#ring,#dot{display:none}}
+button,a.glass,.btn{position:relative;overflow:hidden}
+.btn{cursor:pointer}
+.btn-p:hover{box-shadow:0 0 35px rgba(239,68,68,.85),0 0 70px rgba(239,68,68,.4)}
+.btn-o:hover{background:#ef4444;color:#fff;box-shadow:0 0 35px rgba(239,68,68,.85)}
+.btn:active,#theme:active,#burger:active{transform:scale(.92)!important;box-shadow:0 0 50px rgba(239,68,68,1)}
+.rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.55);transform:scale(0);animation:rp .65s linear;pointer-events:none}
+@keyframes rp{to{transform:scale(1);opacity:0}}
+.pt{position:fixed;width:5px;height:5px;border-radius:50%;background:#ef4444;box-shadow:0 0 10px #ef4444;pointer-events:none;z-index:9999;animation:pt .7s ease-out forwards}
+@keyframes pt{to{transform:translate(var(--x),var(--y)) scale(0);opacity:0}}
+.ld{animation:up .9s cubic-bezier(.2,.8,.2,1) both}@keyframes up{from{opacity:0;transform:translateY(40px)}}
+.ldd{animation:dn .8s both}@keyframes dn{from{transform:translateY(-100%);opacity:0}}
+.nav a{position:relative}.nav a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:#ef4444;box-shadow:0 0 8px #ef4444;transition:.3s}
+.nav a:hover::after,.nav a.on::after{width:100%}
+.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s}.ph.on{opacity:1}
+
+/* ===== Adaptif per perangkat ===== */
+html,body{overflow-x:hidden}body{overflow-wrap:anywhere}
+header{padding-top:env(safe-area-inset-top,0px);padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+main,footer{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+#home h1{font-size:clamp(2.1rem,7vw,4.2rem)}
+#home .frame{width:clamp(13rem,34vw,22rem)!important;height:clamp(13rem,34vw,22rem)!important}
+.sec{padding-top:clamp(3rem,8vw,5.5rem);padding-bottom:clamp(3rem,8vw,5.5rem)}
+#mob a{padding:.7rem 0;min-height:44px;display:flex;align-items:center;border-bottom:1px solid var(--bd)}
+@media (max-width:767px){#home h2{min-height:2.9em}#glow{width:360px!important;height:360px!important}}
+@media (min-width:768px) and (max-width:1023px){.sec{padding-left:2rem;padding-right:2rem}}
+@media (min-width:1536px){html{font-size:18px}.sec{max-width:84rem}header>div{max-width:84rem!important}}
+@media (min-width:2200px){html{font-size:21px}.sec{max-width:100rem}header>div{max-width:100rem!important}}
+@media (max-height:520px) and (orientation:landscape){#home{min-height:auto!important;padding-top:6rem}}
+@media (max-width:359px){#home h1{font-size:1.9rem}.btn{padding:.65rem 1.1rem}}
+@media (hover:none){.glass:hover{transform:none}.glass:active{transform:scale(.97);border-color:#ef4444;box-shadow:0 0 25px rgba(239,68,68,.45)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}#glow{display:none}}
+/* ===== Animasi tambahan ===== */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;background:linear-gradient(90deg,#dc2626,#ef4444);box-shadow:0 0 12px #ef4444}
+.glass:not(header):not(button){position:relative}
+.glass:not(header):not(button)::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%),rgba(239,68,68,.2),transparent 70%)}
+.glass:not(header):not(button):hover::before{opacity:1}
+.ic{width:1.9rem;height:1.9rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+[data-ic] .ic{width:1.6rem;height:1.6rem}
+.pic .ic{width:2.4rem;height:2.4rem}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div><div id="bar"></div><div id="glow"></div><div id="ring"></div><div id="dot"></div>
+
+<!-- NAVBAR -->
+<header class="fixed top-0 inset-x-0 z-50 glass !rounded-none !transform-none hover:!shadow-none" style="border-width:0 0 1px">
+ <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+  <a href="#home" class="mono text-xl font-bold grad">&lt;DaniRayhan/&gt;</a>
+  <nav class="nav hidden lg:flex gap-6 xl:gap-8 text-sm font-medium">
+   <a href="#home" class="hover:text-red-400 transition">Home</a><a href="#about" class="hover:text-red-400 transition">About</a><a href="#skills" class="hover:text-red-400 transition">Skills</a><a href="#experience" class="hover:text-red-400 transition">Experience</a><a href="#projects" class="hover:text-red-400 transition">Projects</a><a href="#contact" class="hover:text-red-400 transition">Contact</a>
+  </nav>
+  <div class="flex items-center gap-3">
+   <a href="#contact" class="btn btn-p hidden sm:inline-block !py-2 !px-4 text-sm">Hubungi</a>
+   <button id="theme" aria-label="Ganti tema" class="w-10 h-10 rounded-full glass !rounded-full flex items-center justify-center text-lg">🌙</button>
+   <button id="burger" class="lg:hidden w-10 h-10 glass !rounded-lg text-xl">☰</button>
+  </div>
+ </div>
+ <div id="mob" class="hidden lg:hidden px-5 pb-4 flex-col gap-3 nav text-sm">
+  <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+ </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section id="home" class="sec min-h-screen flex items-center pt-28">
+ <div class="grid md:grid-cols-2 gap-12 items-center w-full">
+  <div class="rv text-center md:text-left">
+   <p class="mono text-red-400 mb-3">&gt; Halo, saya</p>
+   <h1 class="text-5xl md:text-6xl font-bold leading-tight">Dani Rayhan <span class="grad">Nurzaki</span></h1>
+   <h2 class="mono text-lg md:text-xl mt-4 text-red-400">Mahasiswa PJKR UNESA 2026 & Organizer<span class="animate-pulse">_</span></h2>
+   <p class="mut mt-5 max-w-lg mx-auto md:mx-0">Mahasiswa PJKR UNESA yang memadukan dunia olahraga, kepemimpinan organisasi, dan pengembangan web — membangun sistem penilaian digital yang transparan dan real-time.</p>
+   <div class="flex flex-wrap gap-4 mt-8 justify-center md:justify-start"><a href="#projects" class="btn btn-p">Lihat Proyek</a><a href="#contact" class="btn btn-o">Hubungi Saya</a></div>
+  </div>
+  <div class="rv flex justify-center order-first md:order-none">
+   <div class="frame w-64 h-64 md:w-80 md:h-80">
+    <div class="w-full h-full rounded-full relative overflow-hidden flex items-center justify-center text-7xl" style="background:var(--bg)">👨‍💻<img src="profil.jpg" alt="Dani Rayhan Nurzaki" class="absolute inset-0 w-full h-full object-cover" style="object-position:50% 25%" onerror="this.remove()"></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="sec">
+ <h2 class="text-3xl font-bold mb-10 rv"><span class="grad">01.</span> Tentang Saya</h2>
+ <div class="grid md:grid-cols-2 gap-8">
+  <div class="glass p-7 rv"><p class="mut leading-relaxed">Mahasiswa aktif S1 Pendidikan Jasmani, Kesehatan, dan Rekreasi (PJKR) Universitas Negeri Surabaya (UNESA), Kampus Lidah Wetan, angkatan 2026. Fokus saya mencakup pedagogi keolahragaan, manajemen pelatihan fisik, serta administrasi dan kepemimpinan organisasi. Di luar itu, saya mengembangkan sistem digital sederhana, seperti Sistem Penilaian UKT berbasis web dengan Google Apps Script dan Google Sheets. Saya juga memegang sertifikasi resmi dari program You RISE (DBS Foundation &amp; Yayasan Plan International Indonesia).</p>
+   <div class="mt-5 flex flex-wrap gap-2 mono text-xs"><span class="px-3 py-1 rounded-full border border-red-500 text-red-400">Pedagogi Keolahragaan</span><span class="px-3 py-1 rounded-full border border-red-500 text-red-400">Sistem Digital Sederhana</span><span class="px-3 py-1 rounded-full border border-red-500 text-red-400">Kepemimpinan Organisasi</span></div></div>
+  <div class="grid grid-cols-3 gap-4 rv">
+   <div class="glass p-5 text-center"><div class="text-3xl font-bold grad counter" data-t="3">0</div><p class="mut text-xs mt-1">Proyek Digital</p></div>
+   <div class="glass p-5 text-center"><div class="text-3xl font-bold grad counter" data-t="2">0</div><p class="mut text-xs mt-1">Peran Organisasi</p></div>
+   <div class="glass p-5 text-center"><div class="text-3xl font-bold grad counter" data-t="1">0</div><p class="mut text-xs mt-1">Sertifikasi Resmi</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="sec">
+ <h2 class="text-3xl font-bold mb-10 rv"><span class="grad">02.</span> Skills &amp; Technologies</h2>
+ <div id="skillGrid" class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5"></div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="sec">
+ <h2 class="text-3xl font-bold mb-10 rv"><span class="grad">03.</span> Experience &amp; Education</h2>
+ <div class="tl space-y-8 rv">
+  <div class="glass p-6"><span class="mono text-xs text-red-400">2026 — Sekarang</span><h3 class="font-bold text-lg mt-1">Pimpinan Koordinasi Wilayah &amp; Pembinaan Generasi Muda</h3><p class="mut text-sm mt-2">Memimpin koordinasi strategis tingkat wilayah dalam pembinaan kedisiplinan, kebugaran fisik, dan mental generasi muda. Merancang program kerja tahunan, penjadwalan latihan rutin, serta mediasi komunikasi antar pengurus dan anggota aktif.</p></div>
+  <div class="glass p-6"><span class="mono text-xs text-red-400">Aktif Berkelanjutan</span><h3 class="font-bold text-lg mt-1">Tim Kesekretariatan &amp; Administrasi Data Wilayah</h3><p class="mut text-sm mt-2">Mengembangkan sistem pencatatan data anggota yang terpusat dan digital, serta mengelola persiapan teknis dan administratif ujian kenaikan tingkat dan penerbitan sertifikasi resmi.</p></div>
+  <div class="glass p-6"><span class="mono text-xs text-red-400">14 Agustus 2026</span><h3 class="font-bold text-lg mt-1">You RISE — Financial Literacy &amp; Soft Skill</h3><p class="mut text-sm mt-2">DBS Foundation &amp; Yayasan Plan International Indonesia: literasi keuangan, soft skills, kesiapan kerja, dan manajemen kepemimpinan pemuda.</p></div>
+  <div class="glass p-6"><span class="mono text-xs text-red-400">2026 — Sekarang</span><h3 class="font-bold text-lg mt-1">S1 PJKR — Universitas Negeri Surabaya</h3><p class="mut text-sm mt-2">Fakultas Ilmu Keolahragaan dan Kesehatan (FIKK). Fokus: pendidikan jasmani, metodologi kepelatihan, kesehatan olahraga, evaluasi gerak, dan manajemen rekreasi.</p></div>
+ </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="sec">
+ <h2 class="text-3xl font-bold mb-10 rv"><span class="grad">04.</span> Proyek Pilihan</h2>
+ <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+  <article class="glass p-6 rv flex flex-col"><div class="mb-3 text-red-400 pic" data-ic="code"></div><h3 class="font-bold text-lg">Sistem Penilaian UKT V1 <span class="mut text-sm font-normal">(Basis Google Ecosystem)</span></h3><p class="mut text-sm mt-2 flex-1">Aplikasi web digital pertama untuk rekapitulasi dan penilaian Ujian Kenaikan Tingkat.</p><div class="mono text-xs text-red-400 mt-4">HTML · JavaScript · Google Apps Script · Google Sheets</div><div class="flex gap-3 mt-5"><a href="https://psht-tulangan.github.io/Sistem-Penilaian/" target="_blank" rel="noopener" class="btn btn-p flex-1 text-center text-sm">Lihat Aplikasi</a><a href="https://github.com/PSHT-TULANGAN/Sistem-Penilaian" target="_blank" rel="noopener" class="btn btn-o flex-1 text-center text-sm">Repository</a></div></article>
+  <article class="glass p-6 rv flex flex-col"><div class="mb-3 text-red-400 pic" data-ic="database"></div><h3 class="font-bold text-lg">Sistem Penilaian UKT Ranting Tulangan V2.0</h3><p class="mut text-sm mt-2">Aplikasi web digital generasi kedua untuk rekapitulasi dan penilaian Ujian Kenaikan Tingkat secara transparan dan real-time.</p><div class="mono text-xs text-red-400 mt-4 flex-1 space-y-1"><p><b>Frontend:</b> React 18, TypeScript, Vite 6, Custom CSS</p><p><b>Backend &amp; Database:</b> Supabase, PostgreSQL</p><p><b>Keamanan:</b> Supabase Auth, RLS, PostgreSQL functions</p><p><b>Deployment:</b> Vercel</p></div><div class="flex gap-3 mt-5"><a href="https://sistem-penilaian-ukt-v2.vercel.app/" target="_blank" rel="noopener" class="btn btn-p flex-1 text-center text-sm">Live Demo</a><a href="https://github.com/PSHT-TULANGAN/Sistem-Penilaian" target="_blank" rel="noopener" class="btn btn-o flex-1 text-center text-sm">Repository</a></div></article>
+  <article class="glass p-6 rv flex flex-col"><div class="mb-3 text-red-400 pic" data-ic="calendar-days"></div><h3 class="font-bold text-lg">Sistem Administrasi Data &amp; Penjadwalan Pelatihan Wilayah</h3><p class="mut text-sm mt-2 flex-1">Arsitektur pencatatan terpadu untuk efisiensi pengelolaan data keanggotaan serta penjadwalan latihan rutin secara berkala.</p><div class="mono text-xs text-red-400 mt-4">Administrasi Digital · Manajemen Data · 2026</div><span class="mono text-xs text-red-400 mt-5">● Digunakan secara internal</span></article>
+ </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sec">
+ <h2 class="text-3xl font-bold mb-10 rv"><span class="grad">05.</span> Kontak</h2>
+ <div class="grid md:grid-cols-2 gap-8">
+  <div class="glass p-7 rv !transform-none">
+   <div class="space-y-4">
+    <input id="cn" class="inp" placeholder="Nama" aria-label="Nama" autocomplete="name">
+    <input id="ce" type="email" class="inp" placeholder="Email (wajib)" aria-label="Email" autocomplete="email" required>
+    <textarea id="cm" rows="5" class="inp" placeholder="Pesan" aria-label="Pesan"></textarea>
+    <button id="send" class="btn btn-p w-full">Kirim via Email</button>
+    <p id="cs" class="text-sm text-red-400 hidden">✔ Aplikasi email dibuka dengan pesanmu. Jika tidak terbuka, kirim langsung ke drayhannzaki06@gmail.com</p>
+   </div>
+  </div>
+  <div class="space-y-4 rv">
+   <a id="wa" href="#" target="_blank" rel="noopener" class="glass p-5 flex items-center gap-4"><span class="text-red-400" data-ic="phone"></span><div><p class="font-bold">WhatsApp</p><p class="mut text-sm">+62 895-7129-75020</p></div></a>
+   <a href="https://www.instagram.com/drayhnnn._/" target="_blank" rel="noopener" class="glass p-5 flex items-center gap-4"><span class="text-red-400" data-ic="instagram"></span><div><p class="font-bold">Instagram</p><p class="mut text-sm">@drayhnnn._</p></div></a>
+   <a href="https://www.linkedin.com/in/dani-rayhan-nurzaki-253880448" target="_blank" rel="noopener" class="glass p-5 flex items-center gap-4"><span class="text-red-400" data-ic="linkedin"></span><div><p class="font-bold">LinkedIn</p><p class="mut text-sm">Dani Rayhan Nurzaki</p></div></a>
+   <a href="mailto:drayhannzaki06@gmail.com" class="glass p-5 flex items-center gap-4"><span class="text-red-400" data-ic="mail"></span><div><p class="font-bold">Email</p><p class="mut text-sm">drayhannzaki06@gmail.com</p></div></a>
+  </div>
+ </div>
+</section>
+
+<!-- COMMENTS -->
+<section id="comments" class="sec">
+ <h2 class="text-3xl font-bold mb-10 rv"><span class="grad">06.</span> Testimoni &amp; Komentar</h2>
+ <div class="grid md:grid-cols-2 gap-8">
+  <div class="glass p-7 rv !transform-none space-y-4">
+   <input id="kn" class="inp" placeholder="Nama kamu" aria-label="Nama komentar">
+   <textarea id="kt" rows="4" class="inp" placeholder="Tulis komentar atau testimoni..." aria-label="Komentar"></textarea>
+   <button id="kb" class="btn btn-p w-full">Kirim Komentar</button>
+  </div>
+  <div id="kl" class="space-y-4 rv max-h-96 overflow-y-auto pr-1"></div>
+ </div>
+</section>
+</main>
+
+<footer class="text-center py-8 mut text-sm border-t" style="border-color:var(--bd)">© <span id="yr"></span> Dani Rayhan Nurzaki · Sidoarjo · Built with Passion & Red Neon Aesthetics.</footer>
+
+<script>
+const $=s=>document.querySelector(s), root=document.documentElement;
+// Theme
+function setTheme(d){root.classList.toggle('dark',d);$('#theme').textContent=d?'🌙':'☀️';try{localStorage.setItem('theme',d?'dark':'light')}catch(e){}}
+let saved=null;try{saved=localStorage.getItem('theme')}catch(e){}
+setTheme(saved!=='light');
+$('#theme').onclick=()=>setTheme(!root.classList.contains('dark'));
+$('#burger').onclick=()=>{$('#mob').classList.toggle('hidden');$('#mob').classList.toggle('flex')};
+document.querySelectorAll('#mob a').forEach(a=>a.onclick=()=>{$('#mob').classList.add('hidden');$('#mob').classList.remove('flex')});
+$('#yr').textContent=new Date().getFullYear();
+
+// Skills
+const IC={
+'phone':'<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>',
+'mail':'<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
+'instagram':'<rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>',
+'linkedin':'<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/>',
+'bar-chart-3':'<path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>',
+'file-text':'<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>',
+'palette':'<circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>',
+'code':'<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>',
+'database':'<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/>',
+'calendar-days':'<path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/>',
+'users':'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>'};
+const icon=n=>`<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${IC[n]}</svg>`;
+const skills=[['bar-chart-3','Google Apps Script & Google Sheets'],['file-text','Microsoft Word & Mendeley'],['palette','Canva & Desain Grafis'],['users','Manajemen Organisasi & Kepemimpinan']];
+$('#skillGrid').innerHTML=skills.map(s=>`<div class="glass p-6 text-center rv"><div class="mb-3 flex justify-center text-red-400">${icon(s[0])}</div><p class="font-medium">${s[1]}</p></div>`).join('');
+document.querySelectorAll('[data-ic]').forEach(el=>el.innerHTML=icon(el.dataset.ic));
+
+// Reveal + counters + active nav
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const co=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const el=e.target,t=+el.dataset.t;let n=0;const i=setInterval(()=>{n++;el.textContent=n+'+';if(n>=t)clearInterval(i)},80);co.unobserve(el)}}));
+document.querySelectorAll('.counter').forEach(el=>co.observe(el));
+const secs=[...document.querySelectorAll('main section')];
+addEventListener('scroll',()=>{let cur='home';secs.forEach(s=>{if(scrollY>=s.offsetTop-120)cur=s.id});document.querySelectorAll('.nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur))});
+
+// Contact -> WhatsApp (ganti nomor, format 62895xxxxxxxx)
+const WA='62895712975020';$('#wa').href='https://wa.me/'+WA;
+$('#send').onclick=()=>{const n=$('#cn').value.trim(),e=$('#ce').value.trim(),m=$('#cm').value.trim();
+ if(!n||!e||!m){alert('Mohon isi Nama, Email, dan Pesan.');return}
+ if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){alert('Format email belum benar.');$('#ce').focus();return}
+ const sub=encodeURIComponent('Pesan dari Website Portofolio - '+n),
+  body=encodeURIComponent(`Halo Dani,\n\nNama  : ${n}\nEmail : ${e}\n\nPesan :\n${m}\n\n--\nDikirim dari website portofolio`);
+ const a=document.createElement('a');a.href=`mailto:drayhannzaki06@gmail.com?subject=${sub}&body=${body}`;
+ document.body.appendChild(a);a.click();a.remove();$('#cs').classList.remove('hidden')};
+
+// Comments
+const esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let cms=[];
+try{const s=JSON.parse(localStorage.getItem('cms2')||'null');if(s)cms=s}catch(e){}
+function renderC(){$('#kl').innerHTML=!cms.length?'<p class="mut text-sm text-center py-6">Belum ada komentar. Jadilah yang pertama menulis!</p>':cms.map(c=>`<div class="glass p-5 show"><div class="flex items-center gap-3 mb-2"><span class="w-9 h-9 rounded-full flex items-center justify-center font-bold text-white" style="background:linear-gradient(135deg,#dc2626,#ef4444)">${esc(c.n[0]||'?').toUpperCase()}</span><b>${esc(c.n)}</b></div><p class="mut text-sm">${esc(c.t)}</p></div>`).join('')}
+renderC();
+$('#kb').onclick=()=>{const n=$('#kn').value.trim(),t=$('#kt').value.trim();if(!n||!t)return alert('Isi nama dan komentar.');
+ cms.unshift({n,t});try{localStorage.setItem('cms2',JSON.stringify(cms))}catch(e){}
+ $('#kn').value=$('#kt').value='';renderC()};
+
+// ===== Animasi lanjutan =====
+document.querySelector('header').classList.add('ldd');
+{const [a,b]=document.querySelectorAll('#home .rv');[a,b].forEach(x=>{x.style.transition='none';x.classList.add('show')});
+ [...a.children].forEach((c,i)=>{c.classList.add('ld');c.style.animationDelay=(.3+i*.13)+'s'});b.classList.add('ld');b.style.animationDelay='.6s'}
+let mx=innerWidth/2,my=innerHeight/2,gx=mx,gy=my,rx=mx,ry=my;
+const glow=$('#glow'),ring=$('#ring'),dot=$('#dot');
+addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;dot.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;ring.classList.toggle('big',!!e.target.closest('a,button,input,textarea'))});
+addEventListener('pointerdown',()=>ring.classList.add('press'));addEventListener('pointerup',()=>ring.classList.remove('press'));
+(function loop(){gx+=(mx-gx)*.08;gy+=(my-gy)*.08;rx+=(mx-rx)*.2;ry+=(my-ry)*.2;
+ glow.style.transform=`translate(${gx-glow.offsetWidth/2}px,${gy-glow.offsetHeight/2}px)`;ring.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(loop)})();
+addEventListener('click',e=>{
+ for(let i=0;i<10;i++){const p=document.createElement('i'),a=Math.PI*2*i/10,d=30+Math.random()*30;p.className='pt';
+  p.style.cssText=`left:${e.clientX}px;top:${e.clientY}px;--x:${Math.cos(a)*d}px;--y:${Math.sin(a)*d}px`;document.body.appendChild(p);setTimeout(()=>p.remove(),700)}
+ const t=e.target.closest('.btn,button,a.glass');if(!t)return;
+ const r=t.getBoundingClientRect(),z=Math.max(r.width,r.height)*2,w=document.createElement('span');w.className='rip';
+ w.style.cssText=`width:${z}px;height:${z}px;left:${e.clientX-r.left-z/2}px;top:${e.clientY-r.top-z/2}px`;t.appendChild(w);setTimeout(()=>w.remove(),700)});
+
+
+// ===== Tambahan adaptif & animasi =====
+addEventListener('pointerdown',e=>{mx=e.clientX;my=e.clientY});
+addEventListener('scroll',()=>{$('#bar').style.width=(scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight)*100)+'%'},{passive:true});
+{const h=$('#home h2'),full='Mahasiswa PJKR UNESA 2026 & Organizer';
+ if(!matchMedia('(prefers-reduced-motion:reduce)').matches){h.innerHTML='<span id="tp"></span><span class="animate-pulse">_</span>';let i=0;setTimeout(function t(){$('#tp').textContent=full.slice(0,++i);if(i<full.length)setTimeout(t,45)},900)}}
+const fine=matchMedia('(pointer:fine)').matches;
+document.addEventListener('pointermove',e=>{
+ const c=e.target.closest&&e.target.closest('.glass');
+ if(c){const r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px')}
+ if(!fine)return;const b=e.target.closest&&e.target.closest('.btn');
+ if(b){const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.18}px,${(e.clientY-r.top-r.height/2)*.3}px) scale(1.07)`}});
+document.addEventListener('pointerout',e=>{const b=e.target.closest&&e.target.closest('.btn');if(b&&!b.contains(e.relatedTarget))b.style.transform=''});
+</script>
+</body>
+</html>
